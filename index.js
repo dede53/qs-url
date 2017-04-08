@@ -5,7 +5,8 @@ var url 						= new adapter({
 	"name": "Url",
 	"loglevel": 3,
 	"description": "Führt http-requests aus.",
-	"settingsFile": ""
+	"settingsFile": "",
+	"version":"0.0.1"
 });
 
 process.on('message', function(data) {
