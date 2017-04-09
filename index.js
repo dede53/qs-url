@@ -5,12 +5,13 @@ var url 						= new adapter({
 	"name": "Url",
 	"loglevel": 3,
 	"description": "Führt http-requests aus.",
-	"settingsFile": ""
+	"settingsFile": "",
+	"version":"0.0.1"
 });
 
-process.on('message', function(data) {
-	var status = data.status;
-	var data = data.data;
+process.on('message', function(request) {
+	var status = request.status;
+	var data = request.data;
 	sendURL(status, data);
 });
 
