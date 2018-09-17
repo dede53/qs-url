@@ -9,14 +9,25 @@ var url 						= new adapter({
 	"version":"0.0.1"
 });
 
-process.on('message', function(request) {
-	var status = request.status;
-	var data = request.data;
-	sendURL(status, data);
+process.on('message', function(data) {
+	switch(data.protocol){
+		case "setSetting":
+			url.setSetting(data.setSetting.name, data.setSetting.status);
+			break;
+		default:
+			sendURL(data);
+			break;
+	}
 });
 
-function sendURL(status, data){
-	if(status == 1){
+function sendURL(data){
+	if(data.newStatus == "toggle"){
+		if(data.status == "1"){
+			var msg = data.CodeOff;
+		}else{
+			var msg = data.CodeOn;
+		}
+	}else if(data.newStatus == 1){
 		var msg = data.CodeOn;
 	}else{
 		var msg = data.CodeOff;
