@@ -9,7 +9,7 @@ var url 						= new adapter({
 	"version":"0.0.1"
 });
 
-process.on('message', function(data) {
+url.on('url', function(data) {
 	switch(data.protocol){
 		case "setSetting":
 			url.setSetting(data.setSetting.name, data.setSetting.status);
